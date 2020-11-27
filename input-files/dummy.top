@@ -1,0 +1,24 @@
+; mobley_6055410_GMX.top created by acpype (Rev: 403) on Thu Jan 12 15:32:07 2017
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+1               2               yes             0.5     0.8333
+
+[ atomtypes ]
+;name   bond_type     mass     charge   ptype   sigma         epsilon       Amb
+ ca       ca          0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860
+
+[ moleculetype ]
+;name            nrexcl
+ mobley_6055410 3
+
+[ atoms ]
+;   nr  type  resi  res  atom  cgnr     charge      mass       ; qtot   bond_type
+
+[ system ]
+ mobley_6055410
+
+[ molecules ]
+; Compound        nmols
+ mobley_6055410 1
+

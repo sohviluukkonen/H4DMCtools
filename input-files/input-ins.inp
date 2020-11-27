@@ -1,0 +1,28 @@
+53
+SOLUTE_insXX
+0 0
+
+8
+00
+RAND
+NCYC 
+0
+NACC
+0.3
+30
+0.5 0.5
+0
+0.2
+0.05
+DIST
+1 5
+NGEN
+
+2
+12
+SOLUTE_insYY
+
+0
+100
+STOP
+
