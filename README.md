@@ -23,3 +23,11 @@ II. Accumulation of structures :
 	solutein directory : strutcure files (.in) and optionally topology files (.top)
         input-files directory : additional general input files
 
+Notes : 
+	
+	- h4dmc.x needs to compiled add and added to input-files on each different computer
+	- h4dmc.x is the flexible version of the code for all calculation
+
+TODO :
+	- add modifications done to the rigid version of h4dmc to the flexible version 
+
