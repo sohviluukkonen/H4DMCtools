@@ -21,7 +21,7 @@ rsync -av --update ${SLURM_SUBMIT_DIR}/ .
 
 # Execute the code
 module load gcc
-./h4d-mc.x < input-ins > out-ins-YY
+./h4dmc.x < input-ins > out-ins-YY
 
 # Store the exit status of the parallel job, whether it was successful or not
 MYSTATUS=$?

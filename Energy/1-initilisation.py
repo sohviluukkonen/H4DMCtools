@@ -44,14 +44,13 @@ Creates initilised and equilibrated starting ins and des files for accumulating 
         directory for each solute : solute_name
             input-ini
             acc_{solute_name}_ins0, r_{solute_name}_ins0, acc_{solute_name}_des0, r_{solute_name}_des0
-        initialisation_args.out file : recapitulation of initiliasation params in json form
+        params_ini.out file : recapitulation of initiliasation params in json form
 """
 
 # Parse input params #
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--load_json', help="read paremeters from json_file (if not : uses default parameters or paremeters defined in the commond line)" )
-#parser.add_argument('--save_json', help="save  paremeters to json_file" )
 parser.add_argument('-s','--solutes', default='FreeSolv-nm-V0-mu0.csv', help="File containing solute's name, volume and referce HFE (default: %(default)s)" )
 parser.add_argument('-f','--infile', default='100tip3p',help="refernce input files (default: %(default)s)" )
 parser.add_argument('-b','--create_box', action='store_true', help="create simulation box (default: %(default)s)" )
@@ -66,7 +65,7 @@ parser.add_argument('-wmax',type=float, default=3, help="maximum altitude in the
 parser.add_argument('-v', type=float, default=0.05, help="ins/des speed (default: %(default)s sqrt(kT/M)" )
 parser.add_argument('-dt',type=float, default=0.02, help="time step (default: %(default)s sqrt(M/kT)Å" )
 parser.add_argument('-E2','--Ewald2', type=int, nargs=3, default=[8,3,3], help="Ewald params KL sr sk during ins/des (default: %(default)s)" )
-parser.add_argument('-Hrange', type=int, default=200, help="accumulation range (default: %(default)s)" )
+parser.add_argument('-Hrange', type=int, default=2000, help="accumulation range (default: %(default)s)" )
 parser.add_argument('-dH', type=float, default=0.5, help="accumulation bin size (default: %(default)s kT)" )
 parser.add_argument('-eq','--equil', type=int, default=10000, help="nb of MC equilibartion cycles for destruction (default: %(default)s kT)" )
 parser.add_argument('-j', default="slurm", help=" Job handeling system : slumr or loadleveler  (default: %(default)s)" )
