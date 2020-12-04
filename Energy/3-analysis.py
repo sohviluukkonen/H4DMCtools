@@ -84,7 +84,7 @@ for mol,mu0 in dict_solutes['mu0'].items():
         # Create input-ana
         tools.create_analysis_input(args,solute=mol,mu0=mu0,mol_dir=mol_dir)
         # Run analysis
-        os.system("cd {0}; pwd; ./mc_h2o_isobar_hybrid_0_gf-260620.x < input-ana > out-ana; cd ..".format(mol_dir))
+        os.system("cd {0}; pwd; ./h4dmc.x < input-ana > out-ana; cd ..".format(mol_dir))
         out_file = os.path.join(mol_dir,'out-ana')
         
         # Collect HFE from out-ana
@@ -95,7 +95,7 @@ for mol,mu0 in dict_solutes['mu0'].items():
                 if 'Nombre d\'accumulations' in line :
                     nacc = lines[index].split()[-1]
                 if 'BAR' in line :
-                    hfe=lines[index+9].split()[1]
+                    hfe=float(lines[index+9].split()[1]) + mu0
                     err=lines[index+9].split()[2]
         if j == 0 :
             f1 = open('HFE-{}.csv'.format(nacc),'w')
@@ -128,7 +128,7 @@ for mol,mu0 in dict_solutes['mu0'].items():
                 dict_HFE['HFE-{}'.format(nacc)] = {}
                 dict_HFE['err-{}'.format(nacc)] = {}
 
-            dict_HFE['HFE-{}'.format(nacc)][mol] = hfe
+            dict_HFE['HFE-{}'.format(nacc)][mol] = float(hfe) + mu0
             dict_HFE['err-{}'.format(nacc)][mol] = err
         
         j = 100
@@ -147,5 +147,5 @@ if args.evol == True :
     for mol in dict_HFE['HFE-{}'.format(nacc)].keys():
         f2.write('{}\t'.format(mol))
         for k in dict_HFE.keys():
-            f2.write('{}\t'.format(dict_HFE[k][mol]))
+            f2.write('{:.4f}\t'.format(float(dict_HFE[k][mol])))
         f2.write('\n')
